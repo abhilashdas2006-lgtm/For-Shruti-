@@ -1,91 +1,578 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReliefConnect | Disaster Relief Coordination</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shruti ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at center, #5c123f, #170016 70%);
+  color: white;
+}
+
+.screen {
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 25px;
+  position: relative;
+}
+
+.active {
+  display: flex;
+}
+
+h1 {
+  font-size: 34px;
+  margin: 15px 0;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 15px 28px;
+  margin: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  background: #ff4f91;
+  color: white;
+  box-shadow: 0 0 20px #ff4f91;
+}
+
+input {
+  padding: 15px;
+  border-radius: 25px;
+  border: 2px solid #ff4f91;
+  outline: none;
+  text-align: center;
+  font-size: 17px;
+  width: 230px;
+}
+
+.heart {
+  font-size: 70px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+.small {
+  color: #ffc2dc;
+  font-size: 14px;
+}
+
+.floating {
+  position: absolute;
+  font-size: 30px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+}
+
+.secret {
+  color: #ffd1e4;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+#noButton {
+  background: #555;
+  box-shadow: none;
+}
+
+.ring {
+  font-size: 90px;
+  animation: ring 1.5s infinite alternate;
+}
+
+@keyframes ring {
+  from { transform: rotate(-10deg) scale(1); }
+  to { transform: rotate(10deg) scale(1.15); }
+}
+
+.forever {
+  font-size: 42px;
+  font-weight: bold;
+  color: #ffb4d3;
+  text-shadow: 0 0 25px #ff4f91;
+}
+
+.firework {
+  position: fixed;
+  font-size: 35px;
+  pointer-events: none;
+  animation: explode 2s forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0,0) scale(.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--x),var(--y)) scale(2);
+    opacity: 0;
+  }
+}
+
+.countdown {
+  font-size: 80px;
+  font-weight: bold;
+  animation: pop .8s;
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.5);
+  }
+}
+</style>
 </head>
+
 <body>
-  <header class="navbar">
-    <div class="logo">🚨 ReliefConnect</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#how">How It Works</a>
-      <a href="#about">About</a>
-    </nav>
-    <button class="login-btn" onclick="showMessage('Login will be added in the next step.')">Login</button>
-  </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-text">
-        <p class="tag">AI-POWERED DISASTER RELIEF</p>
-        <h1>Connecting Help<br><span>When It Matters Most.</span></h1>
-        <p class="subtitle">
-          ReliefConnect brings affected people, volunteers, NGOs and suppliers
-          together on one platform during floods, storms and other disasters.
-        </p>
-        <div class="hero-buttons">
-          <button class="primary" onclick="scrollToSection('request')">Request Help</button>
-          <button class="secondary" onclick="scrollToSection('how')">How It Works</button>
-        </div>
-      </div>
+<!-- SCREEN 1 -->
 
-      <div class="hero-card">
-        <div class="status">● LIVE RELIEF NETWORK</div>
-        <div class="big-number">24/7</div>
-        <p>Coordinating people, supplies and emergency requests.</p>
-        <div class="mini-stats">
-          <div><b>128</b><small>Requests</small></div>
-          <div><b>64</b><small>Volunteers</small></div>
-          <div><b>19</b><small>NGOs</small></div>
-        </div>
-      </div>
-    </section>
+<div class="screen active" id="screen1">
 
-    <section id="request" class="request-section">
-      <div>
-        <p class="tag">NEED ASSISTANCE?</p>
-        <h2>Request Emergency Help</h2>
-        <p>In the next step, this button will open a complete help-request form connected to a database.</p>
-      </div>
-      <button class="primary" onclick="showMessage('Help Request Form — coming in Step 2!')">Request Help Now</button>
-    </section>
+  <div class="heart">💌</div>
 
-    <section id="how" class="section">
-      <p class="tag">HOW IT WORKS</p>
-      <h2>One platform. Four groups. One goal.</h2>
-      <div class="cards">
-        <div class="card"><div class="icon">🆘</div><h3>Affected People</h3><p>Submit requests for food, water, medicine, shelter or rescue.</p></div>
-        <div class="card"><div class="icon">🧑‍🚒</div><h3>Volunteers</h3><p>Find nearby requests, accept tasks and update their status.</p></div>
-        <div class="card"><div class="icon">🏢</div><h3>NGOs</h3><p>Coordinate requests, volunteers and relief operations.</p></div>
-        <div class="card"><div class="icon">📦</div><h3>Suppliers</h3><p>List available food, water, medicine and other supplies.</p></div>
-      </div>
-    </section>
+  <h1>Hey Shruti...</h1>
 
-    <section id="about" class="ai-section">
-      <div>
-        <p class="tag">AI FEATURE</p>
-        <h2>Smart Emergency Prioritization</h2>
-        <p>
-          AI will analyse incoming requests and help classify them as
-          Critical, High or Medium priority so urgent cases can be handled first.
-        </p>
-      </div>
-      <div class="priority-box">
-        <div class="priority critical">🔴 CRITICAL <span>Medical / Rescue</span></div>
-        <div class="priority high">🟠 HIGH <span>Food / Water</span></div>
-        <div class="priority medium">🟡 MEDIUM <span>General Support</span></div>
-      </div>
-    </section>
-  </main>
+  <p>
+    I've made something specially for you. ❤️
+  </p>
 
-  <footer>
-    <b>ReliefConnect</b> — JEC AI Hackathon Project · Disaster Relief Coordination
-  </footer>
+  <p class="small">
+    But there's one little security check...
+  </p>
 
-  <div id="toast" class="toast"></div>
-  <script src="script.js"></script>
+  <button onclick="next(2)">
+    🔐 Enter Secret
+  </button>
+
+</div>
+
+
+<!-- SCREEN 2 -->
+
+<div class="screen" id="screen2">
+
+  <div class="heart">🔐</div>
+
+  <h1>Secret Password</h1>
+
+  <p>
+    Hint: What's the name of the boy<br>
+    who is probably annoying you right now? 😂❤️
+  </p>
+
+  <input id="password" placeholder="Enter name">
+
+  <button onclick="checkPassword()">
+    Unlock ❤️
+  </button>
+
+  <p id="wrong" class="small"></p>
+
+</div>
+
+
+<!-- SCREEN 3 -->
+
+<div class="screen" id="screen3">
+
+  <div class="heart">❤️</div>
+
+  <h1>Welcome, Shruti.</h1>
+
+  <p>
+    Access granted. 🔓
+  </p>
+
+  <p>
+    But before I ask you something...
+  </p>
+
+  <button onclick="next(4)">
+    Continue 🥺
+  </button>
+
+</div>
+
+
+<!-- SCREEN 4 -->
+
+<div class="screen" id="screen4">
+
+  <h1>There are 3 hearts...</h1>
+
+  <p>
+    Tap all three to unlock my question. ❤️
+  </p>
+
+  <div id="hearts"></div>
+
+  <p id="heartCount">
+    Hearts found: 0 / 3
+  </p>
+
+</div>
+
+
+<!-- SCREEN 5 -->
+
+<div class="screen" id="screen5">
+
+  <div class="heart">🥺</div>
+
+  <h1>Okay Shruti...</h1>
+
+  <p>
+    I have one extremely serious question.
+  </p>
+
+  <button onclick="countdown()">
+    Ask me... 👀
+  </button>
+
+</div>
+
+
+<!-- SCREEN 6 -->
+
+<div class="screen" id="screen6">
+
+  <div class="countdown" id="number">
+    3
+  </div>
+
+</div>
+
+
+<!-- SCREEN 7 -->
+
+<div class="screen" id="screen7">
+
+  <div class="ring">💍</div>
+
+  <h1>Will you be my future wife?</h1>
+
+  <p>
+    No pressure... 👀❤️
+  </p>
+
+  <button onclick="yes()">
+    YES ❤️
+  </button>
+
+  <button id="noButton" onclick="no()">
+    NO 😭
+  </button>
+
+</div>
+
+
+<!-- SCREEN 8 -->
+
+<div class="screen" id="screen8">
+
+  <div class="heart">💔</div>
+
+  <h1>Wait... WHAT?! 😭</h1>
+
+  <p>
+    My heart wasn't prepared for that answer.
+  </p>
+
+  <button onclick="next(7)">
+    Let me rethink 😭❤️
+  </button>
+
+</div>
+
+
+<!-- FINAL -->
+
+<div class="screen" id="final">
+
+  <div class="ring">💍</div>
+
+  <h1>YAAAAAAAAAY!!! 🥹❤️</h1>
+
+  <p>
+    SHE SAID YES!!! 🎉
+  </p>
+
+  <div class="forever">
+    ABHISHRUTI
+  </div>
+
+  <p>
+    FOREVER ❤️
+  </p>
+
+  <p class="small">
+    Chapter 1: Forever begins here. ✨
+  </p>
+
+</div>
+
+
+<script>
+
+function next(number) {
+
+  document.querySelectorAll(".screen").forEach(function(screen) {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("screen" + number).classList.add("active");
+
+  if (number === 4) {
+    startHeartGame();
+  }
+
+}
+
+
+/* PASSWORD */
+
+function checkPassword() {
+
+  let answer =
+    document.getElementById("password").value
+    .trim()
+    .toLowerCase();
+
+  if (
+    answer === "abhilash" ||
+    answer === "abhilash das"
+  ) {
+
+    next(3);
+
+  } else {
+
+    document.getElementById("wrong").innerHTML =
+      "Hmm... wrong answer 😭 Try again ❤️";
+
+  }
+
+}
+
+
+/* HEART GAME */
+
+let found = 0;
+
+function createHeart() {
+
+  let heart = document.createElement("button");
+
+  heart.innerHTML = "❤️";
+
+  heart.style.position = "absolute";
+
+  heart.style.left =
+    Math.random() * 80 + 10 + "%";
+
+  heart.style.top =
+    Math.random() * 60 + 20 + "%";
+
+  heart.onclick = function() {
+
+    heart.remove();
+
+    found++;
+
+    document.getElementById("heartCount").innerHTML =
+      "Hearts found: " + found + " / 3";
+
+    if (found === 3) {
+
+      setTimeout(function() {
+        next(5);
+      }, 700);
+
+    }
+
+  };
+
+  document.getElementById("screen4").appendChild(heart);
+}
+
+
+function startHeartGame() {
+
+  found = 0;
+
+  for(let i = 0; i < 3; i++) {
+    createHeart();
+  }
+
+}
+
+
+/* COUNTDOWN */
+
+function countdown() {
+
+  next(6);
+
+  let number = document.getElementById("number");
+
+  let count = 3;
+
+  let timer = setInterval(function() {
+
+    count--;
+
+    if(count === 0) {
+
+      clearInterval(timer);
+
+      next(7);
+
+    } else {
+
+      number.innerHTML = count;
+
+    }
+
+  }, 900);
+
+}
+
+
+/* NO */
+
+function no() {
+
+  next(8);
+
+}
+
+
+/* YES */
+
+function yes() {
+
+  document.querySelectorAll(".screen").forEach(function(screen) {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("final").classList.add("active");
+
+  celebration();
+
+}
+
+
+/* FIREWORKS */
+
+function celebration() {
+
+  for(let i = 0; i < 60; i++) {
+
+    let firework =
+      document.createElement("div");
+
+    firework.className = "firework";
+
+    firework.innerHTML =
+      Math.random() > .5 ? "🎆" : "🎇";
+
+    firework.style.left = "50%";
+    firework.style.top = "50%";
+
+    firework.style.setProperty(
+      "--x",
+      Math.random() * 800 - 400 + "px"
+    );
+
+    firework.style.setProperty(
+      "--y",
+      Math.random() * 800 - 400 + "px"
+    );
+
+    document.body.appendChild(firework);
+
+    setTimeout(function() {
+      firework.remove();
+    }, 2000);
+
+  }
+
+}
+
+
+/* FLOATING HEARTS */
+
+setInterval(function() {
+
+  let heart = document.createElement("div");
+
+  heart.className = "floating";
+
+  heart.innerHTML =
+    Math.random() > .5 ? "❤️" : "💕";
+
+  heart.style.left =
+    Math.random() * 100 + "%";
+
+  heart.style.animationDuration =
+    (3 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(function() {
+    heart.remove();
+  }, 7000);
+
+}, 800);
+
+
+/* START HEART GAME WHEN SCREEN OPENS */
+
+document.getElementById("screen4").addEventListener(
+  "transitionstart",
+  startHeartGame
+);
+
+</script>
+
 </body>
 </html>
